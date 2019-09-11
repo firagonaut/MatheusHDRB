@@ -17,8 +17,10 @@ public class Principal {
 
 		Desaloc Teste = new Desaloc();
 
+		System.out.println("Digitar tamanho para alocar(kb):");
 		entrada = STDIN_SCANNER.nextInt();
 
+		System.out.println("Qual algoritmo?(F-First,W-Worst,B-Best):\n");
 		char c = (char) System.in.read();
 		
 		Teste.searchJ(c, entrada);

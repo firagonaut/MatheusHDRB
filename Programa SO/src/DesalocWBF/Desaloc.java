@@ -47,7 +47,7 @@ public class Desaloc {
 			if (flag == -1) {
 				System.out.println("ERRO!");
 			} else {
-				System.out.println("alocado " + j[flag] + "kb -> pos" + flag);
+				System.out.println("Restante " + j[flag] + "kb -> pos" + flag);
 			}
 
 		}
@@ -70,7 +70,7 @@ public class Desaloc {
 			if (flag == -1) {
 				System.out.println("ERRO!");
 			} else {
-				System.out.println("alocado " + j[flag] + "kb -> pos" + flag);
+				System.out.println("Restante " + j[flag] + "kb -> pos" + flag);
 			}
 
 		}
@@ -89,7 +89,7 @@ public class Desaloc {
 			if (flag == -1) {
 				System.out.println("ERRO!");
 			} else {
-				System.out.println("alocado " + j[flag] + "kb -> pos" + flag);
+				System.out.println("Restante " + j[flag] + "kb -> pos" + flag);
 			}
 
 		}

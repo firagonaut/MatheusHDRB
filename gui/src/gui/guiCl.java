@@ -1,16 +1,18 @@
 
 package gui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 public class guiCl extends JFrame {
-    public static void main(String args[]) {
+	public static void main(String args[]) {
 
         //Creating the Frame
         JFrame frame = new JFrame("Chat Frame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(550, 550);
 
         //Creating the MenuBar and adding components
         JMenuBar mb = new JMenuBar();
@@ -26,24 +28,35 @@ public class guiCl extends JFrame {
         //Creating the panel at bottom and adding components
         JPanel panel = new JPanel(); // the panel is not visible in output
         JLabel label = new JLabel("Enter Text");
+        JLabel label2 = new JLabel("    ");
+        label2.setBounds(0,0,100,50);
         JTextField tf = new JTextField(10); // accepts upto 10 characters
+        JTextField resultField= new JTextField(10);
+        resultField.setEditable(false);
         JButton send = new JButton("Send");
         JButton reset = new JButton("Reset");
         panel.add(label); // Components Added using Flow Layout
-        panel.add(label); // Components Added using Flow Layout
+        panel.add(label);
+        panel.add(label2); // Components Added using Flow Layout
+        panel.add(label2);// Components Added using Flow Layout
         panel.add(tf);
         panel.add(send);
         panel.add(reset);
+        
+        
+        
+        // Text Area at the Center
+        JTextArea ta = new JTextArea();
   
         
         class Listener1 implements ActionListener{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				String textStr=tf.getText();
+				System.out.println(textStr);
+				ta.append(textStr + "\n");
 				
-				
-				JOptionPane.(null,"Message?..");
 			}
         	
         }
@@ -60,8 +73,7 @@ public class guiCl extends JFrame {
         
         if (send.getModel().isPressed()) System.out.println("Hello!");
 
-        // Text Area at the Center
-        JTextArea ta = new JTextArea();
+     
         
         class Listener2 implements ActionListener{
 
@@ -69,6 +81,7 @@ public class guiCl extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				 tf.setText(" ");
+				 ta.setText(" ");
 			     
 			}
         	
@@ -84,6 +97,7 @@ public class guiCl extends JFrame {
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
         frame.getContentPane().add(BorderLayout.CENTER, ta);
+        
         frame.setVisible(true);
     }
 }

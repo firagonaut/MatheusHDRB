@@ -5,6 +5,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class guiCl extends JFrame {
 	public static void main(String args[]) {
@@ -35,6 +40,7 @@ public class guiCl extends JFrame {
         resultField.setEditable(false);
         JButton send = new JButton("Send");
         JButton reset = new JButton("Reset");
+        JButton remove = new JButton("Remove");
         panel.add(label); // Components Added using Flow Layout
         panel.add(label);
         panel.add(label2); // Components Added using Flow Layout
@@ -42,12 +48,16 @@ public class guiCl extends JFrame {
         panel.add(tf);
         panel.add(send);
         panel.add(reset);
+        panel.add(remove);
+        
         
         
         
         // Text Area at the Center
         JTextArea ta = new JTextArea();
   
+        
+   
         
         class Listener1 implements ActionListener{
 
@@ -56,7 +66,31 @@ public class guiCl extends JFrame {
 				String textStr=tf.getText();
 				System.out.println(textStr);
 				ta.append(textStr + "\n");
-				
+			}
+        	
+        }
+        
+        class ListenerM1 implements ActionListener{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PrintWriter out = null;
+				try {
+					out = new PrintWriter("a.txt");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				out.println(ta.getText());
+				String content = ta.getText();
+				String path = "C:/a.txt";
+				try {
+					Files.write( Paths.get(path), content.getBytes());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				out.close();
 			}
         	
         }
@@ -65,15 +99,15 @@ public class guiCl extends JFrame {
         
         send.addActionListener(new Listener1());
 
-        
-  
-        
-
+       
+         m11.addActionListener(new ListenerM1());
         
         
         if (send.getModel().isPressed()) System.out.println("Hello!");
 
      
+        
+        int a = 1;
         
         class Listener2 implements ActionListener{
 
@@ -87,9 +121,21 @@ public class guiCl extends JFrame {
         	
         }
         
+        class Listener3 implements ActionListener{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				 tf.setText(" ");
+				 ta.setText(" ");
+				
+			}
+        	
+        }
+        
         reset.addActionListener(new Listener2());
    
-   
+        remove.addActionListener(new Listener3());
         
      
 

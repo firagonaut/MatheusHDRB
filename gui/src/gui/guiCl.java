@@ -5,9 +5,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -74,25 +77,18 @@ public class guiCl extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PrintWriter out = null;
-				try {
-					out = new PrintWriter("a.txt");
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				out.println(ta.getText());
-				String content = ta.getText();
-				String path = "C:/a.txt";
-				try {
-					Files.write( Paths.get(path), content.getBytes());
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				out.close();
-			}
+				        try(  PrintWriter out = new PrintWriter( "Digitado.txt" )){
+				            out.println(ta.getText());
+
+				        } catch (FileNotFoundException e2) {
+				            // TODO Auto-generated catch block
+				            e2.printStackTrace();
+				        }
+				        System.out.println("Save successful");
+				
+			
         	
+        }
         }
       
         
@@ -100,7 +96,7 @@ public class guiCl extends JFrame {
         send.addActionListener(new Listener1());
 
        
-         m11.addActionListener(new ListenerM1());
+         m22.addActionListener(new ListenerM1());
         
         
         if (send.getModel().isPressed()) System.out.println("Hello!");

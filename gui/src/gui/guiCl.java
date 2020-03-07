@@ -21,6 +21,7 @@ public class guiCl extends JFrame {
         JFrame frame = new JFrame("Chat Frame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(550, 550);
+        
 
         //Creating the MenuBar and adding components
         JMenuBar mb = new JMenuBar();
